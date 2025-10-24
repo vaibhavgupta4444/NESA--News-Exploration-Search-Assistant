@@ -1,6 +1,6 @@
 ## NESA: News & Exploration Search Assistant
 
-NESA is a Next.js app powering a Chrome extension that shows the latest news by category and includes an AI search bar powered by Google Gemini 2.5. The UI is built with Tailwind CSS and lightweight UI primitives. The AI answers are rendered as Markdown for better readability.
+NESA is a Next.js app that shows the latest news by category and includes an AI search bar powered by Google Gemini 2.5. The UI is built with Tailwind CSS and lightweight UI primitives. The AI answers are rendered as Markdown for better readability.
 
 ### Key features
 - AI search bar backed by Gemini 2.5 (text responses rendered as Markdown)
@@ -123,25 +123,6 @@ Or set it at runtime and persist the preference:
 ```
 
 Tailwind dark styles are applied via the custom variant defined in CSS.
-
----
-
-## Chrome extension usage (high level)
-
-This app can back a Chrome extension popup or options page:
-- Keep `NESA_API_KEY` only on the server. Your extension calls these API routes; do not ship secrets in the extension.
-- If your extension calls a deployed domain, add that domain under `host_permissions` in your `manifest.json`.
-- Consider rate limiting and basic validation on the API routes.
-
-Example client call from the extension to your deployed API:
-```ts
-const res = await fetch('https://your-domain.com/api/search', {
-	method: 'POST',
-	headers: { 'Content-Type': 'application/json' },
-	body: JSON.stringify({ prompt: 'Summarize today\'s AI news' })
-});
-const data = await res.json();
-```
 
 ---
 
